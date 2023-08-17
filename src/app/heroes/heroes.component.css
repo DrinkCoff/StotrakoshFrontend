@@ -45,6 +45,10 @@
   color: white;
 }
 
+p.break-newline{
+  white-space: pre-wrap
+}
+
 .heroes button.selected:active {
   background-color: black;
   color: white;

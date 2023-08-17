@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
-import { Hero } from '../hero';
+import { Component, OnInit } from '@angular/core';
+import { Stotra } from '../stotra';
 import { HEROES } from '../mock-heroes';
+import { StotraService } from '../stotra.service';
 
 @Component({
   selector: 'app-heroes',
@@ -8,13 +9,24 @@ import { HEROES } from '../mock-heroes';
   styleUrls: ['./heroes.component.css']
 })
 
-export class HeroesComponent {
+export class HeroesComponent implements OnInit {
 
-  heroes = HEROES;
-  selectedHero?: Hero;
+  selectedHero?: Stotra;
   isSelected = false;
 
-  onSelect(hero: Hero): void {
+  stotras?: Stotra[];
+
+    constructor(private stotraService: StotraService) {
+    }
+
+    ngOnInit() {
+      this.stotraService.findAll().subscribe((data: any) => {
+//         this.stotras = data;
+        this.stotras = data.map((obj: any) => ({...obj, description: obj.description.replace(/\n/g, '<br />')}));
+      });
+    }
+
+  onSelect(hero: Stotra): void {
     this.selectedHero = hero;
     this.isSelected = true;
   }
