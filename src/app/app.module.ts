@@ -6,7 +6,7 @@ import { StotraService } from './stotra.service';
 import {MatSelectModule} from '@angular/material/select';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {MatListModule} from '@angular/material/list';
 import { AppComponent } from './app.component';
 import { HeroesComponent } from './heroes/heroes.component';
 
@@ -21,7 +21,8 @@ import { HeroesComponent } from './heroes/heroes.component';
     HttpClientModule,
     MatFormFieldModule,
     MatSelectModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatListModule
   ],
   providers: [ StotraService ],
   bootstrap: [AppComponent]

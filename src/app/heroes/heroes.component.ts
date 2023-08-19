@@ -13,6 +13,7 @@ export class HeroesComponent implements OnInit {
 
   selectedHero?: Stotra;
   isSelected = false;
+  languages = ['English', 'Gujarati', 'Sanskrit'];
 
   stotras?: Stotra[];
 

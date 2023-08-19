@@ -2,19 +2,25 @@
 <mat-form-field>
   <mat-label>Select an option</mat-label>
   <mat-select disableRipple>
-    <mat-option value="1">Option 1</mat-option>
-    <mat-option value="2">Option 2</mat-option>
-    <mat-option value="3">Option 3</mat-option>
+    <li *ngFor="let language of languages">
+      <mat-option value="1">{{language}}</mat-option>
+    </li>
   </mat-select>
 </mat-form-field>
 <div  align="center">
   <ul class="heroes" *ngIf="!isSelected" >
-    <li *ngFor="let hero of stotras">
-      <button [class.selected]="hero === selectedHero" type="button" (click)="onSelect(hero)">
-  <!--      <span class="badge">{{hero.id}}</span>-->
-        <span class="name">{{hero.name}}</span>
-      </button>
-    </li>
+
+    <mat-list role="list" align="center">
+      <li *ngFor="let hero of stotras">
+        <mat-list-item role="listitem" >
+          <button mat-icon-button (click)="onSelect(hero)" matListItemMeta>
+<!--            <mat-icon>info</mat-icon>-->
+            {{hero.name}}
+          </button>
+        </mat-list-item>
+      </li>
+    </mat-list>
+
   </ul>
 </div>
 
