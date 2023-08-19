@@ -1,4 +1,12 @@
 <!--<h2>My Heroes</h2>-->
+<mat-form-field>
+  <mat-label>Select an option</mat-label>
+  <mat-select disableRipple>
+    <mat-option value="1">Option 1</mat-option>
+    <mat-option value="2">Option 2</mat-option>
+    <mat-option value="3">Option 3</mat-option>
+  </mat-select>
+</mat-form-field>
 <div  align="center">
   <ul class="heroes" *ngIf="!isSelected" >
     <li *ngFor="let hero of stotras">
