@@ -1,7 +1,7 @@
 <!--<h2>My Heroes</h2>-->
 <mat-form-field>
   <mat-label>Select an option</mat-label>
-  <mat-select disableRipple>
+  <mat-select disableRipple (selectionChange)="languageChange()">
     <li *ngFor="let language of languages">
       <mat-option value="1">{{language}}</mat-option>
     </li>

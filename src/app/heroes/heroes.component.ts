@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Stotra } from '../stotra';
 import { HEROES } from '../mock-heroes';
 import { StotraService } from '../stotra.service';
+import Sanscript from '@indic-transliteration/sanscript';
 
 @Component({
   selector: 'app-heroes',
@@ -34,5 +35,11 @@ export class HeroesComponent implements OnInit {
 
   onClickBack(): void {
     this.isSelected = false;
+  }
+
+  languageChange(){
+   if(this.selectedHero != undefined) {
+      this.selectedHero.description = Sanscript.t(this.selectedHero.description, 'itrans', 'devanagari'); // अ a
+    }
   }
 }
