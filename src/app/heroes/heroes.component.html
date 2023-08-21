@@ -1,9 +1,9 @@
 <!--<h2>My Heroes</h2>-->
 <mat-form-field>
   <mat-label>Select an option</mat-label>
-  <mat-select disableRipple (selectionChange)="languageChange()">
+  <mat-select disableRipple (selectionChange)="languageChange($event.value)">
     <li *ngFor="let language of languages">
-      <mat-option value="1">{{language}}</mat-option>
+      <mat-option [value]="language">{{language}}</mat-option>
     </li>
   </mat-select>
 </mat-form-field>
@@ -30,7 +30,7 @@
   </button>
   <h2 align="center">{{selectedHero.name | uppercase}}</h2>
 <!--  <div align="center">-->
-    <p align="center" [innerHTML]="selectedHero.description"></p>
+    <p align="center" [innerHTML]="stotraLyrics"></p>
 <!--  </div>-->
 <!--  <div>id: {{selectedHero.id}}</div>-->
 <!--  <div>-->

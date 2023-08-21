@@ -14,7 +14,12 @@ export class HeroesComponent implements OnInit {
 
   selectedHero?: Stotra;
   isSelected = false;
-  languages = ['English', 'Gujarati', 'Sanskrit'];
+  stotraLyrics = '';
+
+  languages = [ 'devanagari', 'english', 'kannada', 'gujarati', 'telugu'];
+                 // kannada
+                 // gujarati
+                 // telugu]; //['English', 'Gujarati', 'Sanskrit'];
 
   stotras?: Stotra[];
 
@@ -30,6 +35,7 @@ export class HeroesComponent implements OnInit {
 
   onSelect(hero: Stotra): void {
     this.selectedHero = hero;
+    this.stotraLyrics = this.selectedHero.description;
     this.isSelected = true;
   }
 
@@ -37,9 +43,19 @@ export class HeroesComponent implements OnInit {
     this.isSelected = false;
   }
 
-  languageChange(){
+  languageChange(value?: string){
+
+  // devanagari
+  // kannada
+  // gujarati
+  // telugu
    if(this.selectedHero != undefined) {
-      this.selectedHero.description = Sanscript.t(this.selectedHero.description, 'itrans', 'devanagari'); // अ a
+    if(value === 'english'){
+      this.stotraLyrics = this.selectedHero.description;
+    }
+    else{
+      this.stotraLyrics = Sanscript.t(this.selectedHero.description, 'itrans', String(value)); // अ a
+      }
     }
   }
 }
