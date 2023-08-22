@@ -1,12 +1,4 @@
 <!--<h2>My Heroes</h2>-->
-<mat-form-field>
-  <mat-label>Select an option</mat-label>
-  <mat-select disableRipple (selectionChange)="languageChange($event.value)">
-    <li *ngFor="let language of languages">
-      <mat-option [value]="language">{{language}}</mat-option>
-    </li>
-  </mat-select>
-</mat-form-field>
 <div  align="center">
   <ul class="heroes" *ngIf="!isSelected" >
 

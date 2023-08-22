@@ -1,0 +1,22 @@
+<mat-toolbar>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>Stotrakosh</span>
+  <span class="example-spacer"></span>
+<!--  <mat-form-field>-->
+<!--    <mat-label>Select an option</mat-label>-->
+    <mat-select disableRipple (selectionChange)="languageChange($event.value)">
+      <li *ngFor="let language of languages">
+        <mat-option [value]="language">{{language}}</mat-option>
+      </li>
+    </mat-select>
+<!--  </mat-form-field>-->
+
+  <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <mat-icon>favorite</mat-icon>
+  </button>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>

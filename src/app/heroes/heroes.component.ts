@@ -13,7 +13,6 @@ import Sanscript from '@indic-transliteration/sanscript';
 export class HeroesComponent implements OnInit {
   // Variables at Startup
   stotras?: Stotra[];
-  languages = [ 'devanagari', 'english', 'kannada', 'gujarati', 'telugu'];
   // Variables for Stotra Selection
   selectedStotra?: Stotra;
   isSelected = false;
