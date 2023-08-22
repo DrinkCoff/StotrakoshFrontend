@@ -11,51 +11,61 @@ import Sanscript from '@indic-transliteration/sanscript';
 })
 
 export class HeroesComponent implements OnInit {
-
-  selectedHero?: Stotra;
-  isSelected = false;
-  stotraLyrics = '';
-
-  languages = [ 'devanagari', 'english', 'kannada', 'gujarati', 'telugu'];
-                 // kannada
-                 // gujarati
-                 // telugu]; //['English', 'Gujarati', 'Sanskrit'];
-
+  // Variables at Startup
   stotras?: Stotra[];
+  languages = [ 'devanagari', 'english', 'kannada', 'gujarati', 'telugu'];
+  // Variables for Stotra Selection
+  selectedStotra?: Stotra;
+  isSelected = false;
+  // Variables for Stotra Processing
+  processedStotraToDisplay = '';
+  fromLanguage = 'itrans';
+  targetLanguage = 'itrans';
+
 
     constructor(private stotraService: StotraService) {
     }
 
     ngOnInit() {
       this.stotraService.findAll().subscribe((data: any) => {
-//         this.stotras = data;
-        this.stotras = data.map((obj: any) => ({...obj, description: obj.description.replace(/\n/g, '<br />')}));
+        this.stotras = data;
       });
     }
 
-  onSelect(hero: Stotra): void {
-    this.selectedHero = hero;
-    this.stotraLyrics = this.selectedHero.description;
+  onStotraSelect(hero: Stotra): void {
+    this.selectedStotra = hero;
     this.isSelected = true;
+    this.processStotraForDisplay();
   }
 
   onClickBack(): void {
     this.isSelected = false;
+    this.processedStotraToDisplay = '';
   }
 
   languageChange(value?: string){
-
-  // devanagari
-  // kannada
-  // gujarati
-  // telugu
-   if(this.selectedHero != undefined) {
-    if(value === 'english'){
-      this.stotraLyrics = this.selectedHero.description;
-    }
-    else{
-      this.stotraLyrics = Sanscript.t(this.selectedHero.description, 'itrans', String(value)); // अ a
+   if(this.selectedStotra != undefined) {
+      if(value === 'english'){
+        this.targetLanguage = 'itrans';
       }
+      else{
+         this.targetLanguage = String(value);
+        }
     }
+    this.processStotraForDisplay();
+  }
+
+  processStotraForDisplay(){
+    var selectedStotraDescription = '';
+    if(this.selectedStotra !== undefined){
+      selectedStotraDescription = this.selectedStotra.description;
+      selectedStotraDescription = Sanscript.t(selectedStotraDescription, this.fromLanguage, this.targetLanguage);
+      selectedStotraDescription = selectedStotraDescription.replace(/\n/g, '<br />');
+      this.processedStotraToDisplay = selectedStotraDescription;
+    }
+  }
+
+  supportedLanguagesList(){
+    // ahom, assamese, avestan, balinese, bengali, bhaisuki, brahmi, brahmi_tamil, burmese, chakma, cham, cyrillic, devanagari, dogra, gondi_gunjala, gondi_masaram, grantha, grantha_pandya, gujarati, gurmukhi, hk, iast, itrans, itrans_dravidian, javanese, kannada, khamti_shan, kharoshti, khmer, khom_thai, khudawadi, kolkata, lao, lao_pali, lepcha, limbu, mahajani, malayalam, manipuri, marchen, modi, mon, mro, multani, newa, ol_chiki, oriya, persian_old, phags_pa, ranjana, rejang, rohingya, sanskritOCR, shan, sharada, siddham, sinhala, slp1, sora_sompeng, sundanese, syloti_nagari, tagalog, tagbanwa, tai_laing, takri, tamil, tamil_extended, tamil_superscripted, telugu, thai, tibetan, tirhuta_maithili, urdu, vattelutu, velthuis, wancho, warang_citi, wx, zanbazar_square
   }
 }

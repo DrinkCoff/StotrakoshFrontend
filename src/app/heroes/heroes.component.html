@@ -13,7 +13,7 @@
     <mat-list role="list" align="center">
       <li *ngFor="let hero of stotras">
         <mat-list-item role="listitem" >
-          <button mat-icon-button (click)="onSelect(hero)" matListItemMeta>
+          <button mat-icon-button (click)="onStotraSelect(hero)" matListItemMeta>
 <!--            <mat-icon>info</mat-icon>-->
             {{hero.name}}
           </button>
@@ -24,17 +24,17 @@
   </ul>
 </div>
 
-<div *ngIf="selectedHero && isSelected">
+<div *ngIf="selectedStotra && isSelected">
   <button type="button" (click)="onClickBack()">
     <span class="name">Back</span>
   </button>
-  <h2 align="center">{{selectedHero.name | uppercase}}</h2>
+  <h2 align="center">{{selectedStotra.name | uppercase}}</h2>
 <!--  <div align="center">-->
-    <p align="center" [innerHTML]="stotraLyrics"></p>
+    <p align="center" [innerHTML]="processedStotraToDisplay"></p>
 <!--  </div>-->
-<!--  <div>id: {{selectedHero.id}}</div>-->
+<!--  <div>id: {{selectedStotra.id}}</div>-->
 <!--  <div>-->
 <!--    <label for="hero-name">Hero name: </label>-->
-<!--    <input id="hero-name" [(ngModel)]="selectedHero.name" placeholder="name">-->
+<!--    <input id="hero-name" [(ngModel)]="selectedStotra.name" placeholder="name">-->
 <!--  </div>-->
 </div>
