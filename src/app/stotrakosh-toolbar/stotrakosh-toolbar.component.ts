@@ -33,8 +33,10 @@ export class StotrakoshToolbarComponent implements OnInit {
       else{
          this.selectedLanguage = String(value);
         }
-  this.toolbarPropogateService.sendLanguageChangeEvent(this.selectedLanguage);
-//     this.processStotraForDisplay();
+    this.toolbarPropogateService.sendLanguageChangeEvent(this.selectedLanguage);
   }
 
+  homeClicked() {
+    this.toolbarPropogateService.sendHomeClickedEvent();
+  }
 }

@@ -23,12 +23,16 @@ export class HeroesComponent implements OnInit {
   processedStotraToDisplay = '';
   fromLanguage = 'itrans';
   targetLanguage = 'itrans';
-  toolbarSettingsChange:Subscription;
+  toolbarSettingsLanguageChange:Subscription;
+  toolbarSettingsHome:Subscription;
 
     constructor(private stotraService: StotraService, private toolbarPropogateService:ToolbarPropogateService) {
-        this.toolbarSettingsChange=    this.toolbarPropogateService.getLanguageChangeEvent().subscribe((selectedLanguage)=>{
-        this.languageChange(selectedLanguage);
-        })
+        this.toolbarSettingsLanguageChange = this.toolbarPropogateService.getLanguageChangeEvent().subscribe((selectedLanguage)=>{
+          this.languageChange(selectedLanguage);
+          });
+          this.toolbarSettingsHome = this.toolbarPropogateService.getHomeClickedEvent().subscribe(()=>{
+                                               this.onClickHome();
+                                               });
     }
 
     ngOnInit() {
@@ -43,7 +47,7 @@ export class HeroesComponent implements OnInit {
     this.processStotraForDisplay();
   }
 
-  onClickBack(): void {
+  onClickHome(): void {
     this.isSelected = false;
     this.processedStotraToDisplay = '';
   }
