@@ -68,3 +68,9 @@ p.break-newline{
 .heroes .name {
   align-self: center;
 }
+
+.stotra-button {
+  margin: 5px;
+  white-space: nowrap;
+  width: 500px;
+}

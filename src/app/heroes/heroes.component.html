@@ -5,7 +5,7 @@
     <mat-list role="list" align="center">
       <li *ngFor="let hero of stotras">
         <mat-list-item role="listitem" >
-          <button mat-icon-button (click)="onStotraSelect(hero)" matListItemMeta>
+          <button mat-icon-button="accent" class="stotra-button" (click)="onStotraSelect(hero)" matListItemMeta>
 <!--            <mat-icon>info</mat-icon>-->
             {{hero.name}}
           </button>
