@@ -3,6 +3,9 @@ import { Stotra } from '../stotra';
 import { HEROES } from '../mock-heroes';
 import { StotraService } from '../stotra.service';
 import Sanscript from '@indic-transliteration/sanscript';
+import { ToolbarPropogateService } from './../toolbar-propogate.service';
+import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-heroes',
@@ -20,9 +23,12 @@ export class HeroesComponent implements OnInit {
   processedStotraToDisplay = '';
   fromLanguage = 'itrans';
   targetLanguage = 'itrans';
+  toolbarSettingsChange:Subscription;
 
-
-    constructor(private stotraService: StotraService) {
+    constructor(private stotraService: StotraService, private toolbarPropogateService:ToolbarPropogateService) {
+        this.toolbarSettingsChange=    this.toolbarPropogateService.getLanguageChangeEvent().subscribe((selectedLanguage)=>{
+        this.languageChange(selectedLanguage);
+        })
     }
 
     ngOnInit() {
